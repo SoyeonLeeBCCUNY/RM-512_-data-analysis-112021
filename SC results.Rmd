@@ -1,0 +1,65 @@
+---
+title: "sunk cost"
+author: "Soyeon Lee"
+date: "11/25/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+sc_data<-read.csv("draft5_Cleaned_Group Project PSYC512_112421.csv")
+
+lm(l_moneySC~age,data=sc_data)
+
+cor.test(sc_data$l_moneySC,sc_data$age)
+```
+```{r}
+# Box Plot of Monetary Sunk Cost Effect
+library(ggplot2)
+p<-ggplot(sc_data, aes(y=l_moneySC))+
+      geom_boxplot(outlier.color = "red", outlier.size=3)
+
+p
+
+
+boxplot(sc_data$l_moneySC, ylab="Money SC")
+```
+
+
+
+```{r}
+library(ggplot2)
+#Monetary Sunk cost vs. age Scatter plot
+
+ggplot(sc_data,aes(x=age,y=l_moneySC))+
+    geom_point()+
+    xlab("Age")+
+    ylab("Money SC")+
+    geom_smooth(method='lm', se=FALSE)
+```
+
+
+```{r}
+boxplot(sc_data$l_timeSC, ylab="Time SC")
+```
+
+
+
+```{r}
+#Time sunk cost vs. age Scatter plot
+
+ggplot(sc_data,aes(x=age,y=l_timeSC))+
+    geom_point()+
+    xlab("Age")+
+    ylab("Time SC")+
+    geom_smooth(method='lm', se=FALSE)
+```
+
+
+
+
+
